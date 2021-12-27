@@ -3,11 +3,11 @@ import { useSelector } from 'react-redux';
 import Navigation from './Navigation';
 import AuthNav from './AuthNav';
 import UserMenu from './UserMenu/UserMenu';
-import authSelectors from '../../redux/auth/auth-selector';
+import { getLoggedIn } from '../../redux/auth/auth-selector';
 import './Menu.css';
 
 export default function AppBar() {
-    const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+    const isLoggedIn = useSelector(getLoggedIn);
 
     return (
         <nav className="line">

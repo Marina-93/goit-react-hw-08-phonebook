@@ -1,12 +1,15 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { getLoggedIn } from '../../redux/auth/auth-selector';
 import './Menu.css';
 
 export default function Navigation() {
+    const isLoggedIn = useSelector(getLoggedIn);
     return (
-        <nav className="line-components">
+        <div className="line-components">
             <NavLink className={(data)=>data.isActive?"nav activ": "nav"} to="/" > Home </NavLink>
-            <NavLink className={(data)=>data.isActive?"nav activ": "nav"} to="/contacts"> Contacts </NavLink>
-        </nav>
+            {isLoggedIn && <NavLink className={(data) => data.isActive ? "nav activ" : "nav"} to="/contacts"> Contacts </NavLink>}
+        </div>
     )
 };

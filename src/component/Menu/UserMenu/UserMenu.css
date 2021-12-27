@@ -1,0 +1,34 @@
+.user-contaner {
+  display: flex;
+  align-items: center;
+  margin-right: 15px;
+}
+
+.user-img {
+  margin-right: 10px;
+  border-radius: 50%;
+}
+
+.user-text {
+  margin-right: 10px;
+}
+
+.btn-user {
+  width: 130px;
+  height: 40px;
+  float: right;
+  border: 1px solid #253737;
+  background: #416b68;
+  border-radius: 6px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0,
+    inset rgba(255, 255, 255, 0.7) 0 1px 0;
+  text-shadow: #333333 0 1px 0;
+  color: #e1e1e1;
+}
+
+.btn-user:hover {
+  border: 1px solid #253737;
+  text-shadow: #333333 0 1px 0;
+  background: #4d9994;
+  color: #fff;
+}

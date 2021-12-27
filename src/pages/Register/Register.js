@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { register } from '../../redux/auth/auth-options';
+import { getLoggedIn } from '../../redux/auth/auth-selector';
+import './Register.css';
 
 export default function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const isLoggedIn = useSelector(getLoggedIn);
   
   const handleChange = ({ target: { name, value } }) => {
-
     switch (name) {
       case 'name':
         return setName(value);
@@ -30,45 +32,52 @@ export default function Register() {
   };
   
   return (
-    <div>
-      <h1>Страница регистрации</h1>
+    !isLoggedIn && (
+      <div>
+        <h1 className='text-register'>SignUp</h1>
       
-      <form
-        onSubmit={handleSubmit}
-      >
-        <label>
-          Имя
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleChange}
-          />
-        </label>
+        <form
+          className='form-register'
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
+          <label>
+            Name
+            <input
+              className='input-register'
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleChange}
+            />
+          </label>
         
-        <label>
-          Почта
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
+          <label>
+            Email
+            <input
+              className='input-register'
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </label>
         
-        <label>
-          Пароль
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
+          <label>
+            Password
+            <input
+              className='input-register'
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </label>
         
-        <button type="submit">Зарегистрироваться</button>
-      </form>
-    </div>
-  )
+          <button className='btn-register' type="submit">SignUp</button>
+        </form>
+      </div>
+    )
+  );
 }
       

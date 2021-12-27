@@ -1,4 +1,5 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import { combineReducers } from 'redux';
 import {
   persistStore,
   persistReducer,
@@ -10,7 +11,7 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import phonReduser from './phonebook/phone-reducer';
+import { contactList, contactFilter, error } from './contacts/reducers';
 import authReducer from './auth/auth-slice';
 
 const middleware = [
@@ -27,10 +28,16 @@ const authPersistConfig = {
   whitelist: ['token'],
 };
 
+const contactReducer = combineReducers({
+  contactList,
+  contactFilter,
+  error,
+});
+
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
-    contacts: phonReduser,
+    contacts: contactReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',

@@ -1,15 +1,17 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from '../../redux/auth/auth-options';
+import { getLoggedIn } from '../../redux/auth/auth-selector';
+import './LogIn.css';
 
 export default function LogIn() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  
+  const isLoggedIn = useSelector(getLoggedIn);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     switch (name) {
       case 'email':
         setEmail(value);
@@ -29,35 +31,40 @@ export default function LogIn() {
   };
 
   return (
-    <div>
-      <h1>Страница логина</h1>
+    !isLoggedIn && (
+      <div>
+        <h1 className='text-logIn'>LogIn</h1>
 
-      <form
-        onSubmit={handleSubmit}
-        autoComplete="off"
-      >
-        <label >
-          Почта
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-          />
-        </label>
+        <form
+          className='form-login'
+          onSubmit={handleSubmit}
+          autoComplete="off"
+        >
+          <label >
+            Email
+            <input
+              className='input-login'
+              type="email"
+              name="email"
+              value={email}
+              onChange={handleChange}
+            />
+          </label>
 
-        <label >
-          Пароль
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-          />
-        </label>
+          <label >
+            Password
+            <input
+              className='input-login'
+              type="password"
+              name="password"
+              value={password}
+              onChange={handleChange}
+            />
+          </label>
 
-        <button type="submit">Войти</button>
-      </form>
-    </div>
+          <button className='btn-login' type="submit">LogIn</button>
+        </form>
+      </div>
+    )
   );
 }

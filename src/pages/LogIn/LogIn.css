@@ -1,0 +1,51 @@
+.form-login {
+  margin: 0 auto;
+  max-width: 95%;
+  padding: 30px 30px 6px 30px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 13px 3px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.input-login {
+  width: 100%;
+  padding: 12px 20px;
+  padding-left: 50px;
+  background-image: url('https://cdn-icons-png.flaticon.com/128/6432/6432423.png');
+  background-size: 40px;
+  background-position-x: 5px;
+  background-repeat: no-repeat;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.input-login[type='password'] {
+  background-image: url('https://cdn-icons-png.flaticon.com/128/3521/3521105.png');
+}
+
+.input-login:focus {
+  background-color: lightblue;
+}
+
+.btn-login {
+  width: 130px;
+  height: 40px;
+  border-radius: 4px;
+  float: right;
+  border: 1px solid #253737;
+  background: #416b68;
+  border-radius: 6px;
+  box-shadow: rgba(255, 255, 255, 0.1) 0 1px 0,
+    inset rgba(255, 255, 255, 0.7) 0 1px 0;
+  text-shadow: #333333 0 1px 0;
+  color: #e1e1e1;
+}
+
+.btn-login:hover {
+  border: 1px solid #253737;
+  text-shadow: #333333 0 1px 0;
+  background: #4d9994;
+  color: #fff;
+}

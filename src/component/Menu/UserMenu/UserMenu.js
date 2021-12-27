@@ -1,17 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { logOut } from '../../../redux/auth/auth-options';
-import authSelectors from '../../../redux/auth/auth-selector';
-import '../Menu.css';
+import { getUserName } from '../../../redux/auth/auth-selector';
+import './UserMenu.css';
 
 export default function UserMenu() {
   const dispatch = useDispatch();
-  const name = useSelector(authSelectors.getUsername);
+  const name = useSelector(getUserName);
 
   return (
-    <div>
-    <img src="" alt="" width="32" />
-    <span >Welcome, {name}</span>
-    <button type="button" onClick={() => dispatch(logOut())}>
+    <div className='user-contaner'>
+    <img className='user-img' src="https://bipbap.ru/wp-content/uploads/2018/03/01-700x1050-640x960.jpg" alt="" width="32" />
+    <span className='user-text'>Welcome, {name}</span>
+    <button className='btn-user' type="button" onClick={() => dispatch(logOut())}>
       Sign out
     </button>
   </div>
